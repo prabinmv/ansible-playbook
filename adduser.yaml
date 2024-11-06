@@ -1,0 +1,8 @@
+- name: user creation
+  hosts: host2
+  become: true
+  tasks:
+  - name: create user
+    user:
+      name: jenkins
+      group: staff
