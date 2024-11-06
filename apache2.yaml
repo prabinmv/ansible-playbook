@@ -1,5 +1,5 @@
-- name: Installing Apache
-  hosts: host1
+- name: Installing Apache and firewall port
+  hosts: host2
   become: true
   
   tasks:
@@ -13,3 +13,23 @@
       name: apache2
       state: started
       enabled: yes
+
+  - name: apt update
+    apt:
+      update_cache: yes 
+
+  - name: "install firewalld"
+    apt:
+      name: firewalld
+      state: present
+
+  - name: Open port 80 for apache2
+    firewalld:
+      service: http
+      permanent: true
+      state: enabled
+  
+  - name: Firewalld restart
+    service:
+      name: firewalld
+      state: reloaded
