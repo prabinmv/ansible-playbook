@@ -1,0 +1,15 @@
+- name: Copy shell and Execute
+  hosts: host2
+  become: true
+
+  tasks:
+  - name: Copy file to home folder
+    copy:
+      src: /home/prabin/cfile.sh
+      dest: /home/ubuntu
+      owner: ubuntu
+      group: ubuntu
+      mode: '0744'
+  
+  - name: Execute shell
+    shell: /home/ubuntu/cfile.sh
