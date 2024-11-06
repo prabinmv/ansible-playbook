@@ -1,0 +1,9 @@
+- name: "Change File Permission"
+  hosts: host2
+  become: true
+
+  tasks:
+  - name: "Permission Change"
+    file:
+        path: /home/ubuntu/linux2
+        mode: a+x
