@@ -1,0 +1,9 @@
+- name: Change the password
+  hosts: host2
+  become: true
+  tasks:
+  - name: Change Jenkins Password
+    user:
+      name: jenkins
+      update_password: always
+      password: "{{ newpassword|password_hash ('sha512')}}"
