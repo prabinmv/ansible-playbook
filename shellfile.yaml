@@ -13,3 +13,14 @@
   
   - name: Execute shell
     shell: /home/ubuntu/cfile.sh
+
+  - name: schedule a cron
+    cron:
+      name: This job is scheduled by ansible
+      minute: "0"
+      hour: "10"
+      day: "*"
+      month: "*"
+      weekday: "4"
+      user: root
+      job: /home/ubuntu/cfile.sh 
