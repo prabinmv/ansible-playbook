@@ -1,0 +1,14 @@
+- name : Find and kill apache2 process
+  hosts: host1
+  become: true
+
+  tasks:
+    - name: getting proceess id of apache2 
+      ignore_errors: yes
+      shell: "ps -aux | grep apache2 | grep root |awk '{print $2}'"
+      register: running_process
+
+    - name: kill the process
+      ignore_errors: yes
+      shell: "kill {{ item }}"
+      with_items: "{{ running_process.stdout }}"
