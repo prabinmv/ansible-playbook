@@ -1,0 +1,20 @@
+---
+- name: Create and attach EBS volume to EC2
+  hosts: host2
+  become: true
+  # ansible_python_interpreter: /usr/bin/python3
+#   connection: local
+#   gather_facts: false
+
+  tasks:
+  - name: "Create EBS volume"
+    amazon.aws.ec2_vol:
+      name: my_existing_volume_Name_tag
+      instance: i-0ca0d61fe3d190981
+      volume_size: 8
+      volume_type: gp2
+      region: us-east-1
+      zone: us-east-1b
+      device_name: /dev/xvdf                                             
+            
+#install boto3 botocore on ec2

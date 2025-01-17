@@ -1,6 +1,6 @@
 ---
 - name: "Ping Test"
-  hosts: all
+  hosts: host2
 
   tasks:
   - name: "Test Connectivity"
