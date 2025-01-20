@@ -1,0 +1,10 @@
+- name: Full Insta ll
+  hosts: host2
+  become: true
+  roles:
+  - fullinstall
+
+# - name: Basic Install
+#   hosts: host2
+#   roles:
+#   - basicinstall
